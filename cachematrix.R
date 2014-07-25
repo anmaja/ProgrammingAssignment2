@@ -19,7 +19,8 @@ makeCacheMatrix <- function(x = matrix()) {
 	  
 	# This function sets values of 'x' and 's' to the variables outside of the function. 
 	# It looks for the variables in a parent context to overwrite, instead of creating 
-	# a new variable within the scope of the function. 
+	# a new variable within the scope of the function. If it does not exist yet in the 
+	# parent environments, it creates the variable in the global environment.
 	# Basically, this function resets the variables.	  
     set <- function(y) {
 			# Puts input 'y' in the variable called 'x' outside of the function, 
@@ -93,5 +94,5 @@ cacheSolve <- function(x, ...) {
 ## [variable_name]$set(matrix(c([the_elements_in_the_matrix]), nrow=[number_of_rows], ncol=[number_of_columns])) --- Overwrites the existing matrix, and resets the cached inversed matrix to NULL
 ## [variable_name]$getinverse() --- Returns matrix inverse from the cache, or NULL if there isn't a cached inverse matrix
 
-## DO NOT USE [variable_name]$setmatrix(matrix(c([the_elements_in_the_matrix]), nrow=[number_of_rows], ncol=[number_of_columns])) 
-## Calling '$setmatrix' directly will overwrite the calculated & cashed inverse matrix, therefore the matrices in the list/cache will not match, making the output of cacheSolve incorrect. 
+## DO NOT USE [variable_name]$setinverse(matrix(c([the_elements_in_the_matrix]), nrow=[number_of_rows], ncol=[number_of_columns])) 
+## Calling '$setinverse' directly will overwrite the calculated & cashed inverse matrix, therefore the matrices in the list/cache will not match, making the output of cacheSolve incorrect. 
